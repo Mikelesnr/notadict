@@ -19,7 +19,7 @@ class DocumentHubController extends Controller
             ->latest()
             ->get(['id', 'title', 'status', 'drive_file_id', 'drive_web_view_link', 'drive_download_link', 'created_at']);
 
-        return Inertia::render('Documents/Index', [
+        return Inertia::render('Dashboard', [
             'transcriptions' => $transcriptions,
         ]);
     }
