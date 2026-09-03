@@ -1,14 +1,14 @@
 # =========================================================
 # Stage 1: Build Frontend Assets (Patched Alpine 3.21)
 # =========================================================
-FROM node:22-alpine AS node-builder
+FROM node:23-alpine AS node-builder
 WORKDIR /app
 
 # Patch all OS packages to clear Alpine CVEs
 RUN apk update && apk upgrade --no-cache
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 COPY . .
 RUN npm run build
